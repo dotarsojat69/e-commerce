@@ -33,3 +33,13 @@ export const cartItemSchema = z.object({
       "Price must have exactly two decimal places (e.g., 49.99)"
     ),
 });
+
+export const shippingAddressSchema = z.object({
+  fullName: z.string().min(8, "Name must be at least 8 characters"),
+  streetAddress: z.string().min(8, "Address must be at least 8 characters"),
+  city: z.string().min(6, "city must be at least 6 characters"),
+  postalCode: z.string().min(5, "Postal code must be at least 5 characters"),
+  country: z.string().min(6, "Country must be at least 6 characters"),
+  lat: z.number().optional(),
+  lng: z.number().optional(),
+});
