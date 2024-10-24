@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { DrizzleAdapter } from "@auth/drizzle-adapter";
 import { compareSync } from "bcrypt-ts-edge";
 import { eq } from "drizzle-orm";
