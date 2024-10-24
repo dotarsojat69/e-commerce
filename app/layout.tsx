@@ -4,6 +4,7 @@ import "./globals.css";
 import { Roboto_Slab as FontSans } from 'next/font/google'
 import { APP_DESCRIPTION, APP_NAME } from "@/lib/constant";
 import { cn } from "@/lib/utils";
+import { Toaster } from "@/components/ui/toaster";
 
 const fontSans = FontSans({
   subsets: ['latin'],
@@ -30,6 +31,7 @@ export default function RootLayout({
         )}
       >
         {children}
+        <Toaster />
       </body>
     </html>
   );
