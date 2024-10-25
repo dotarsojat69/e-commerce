@@ -1,4 +1,4 @@
-## <a name="quick-start">🤸 Quick Start</a>
+## <a name="quick-start">Quick Start</a>
 
 Follow these steps to set up the project locally on your machine.
 
@@ -39,5 +39,7 @@ DEFAULT_PAYMENT_METHOD=Paypal
 PAYPAL_CLIENT_ID=
 PAYPAL_APP_SECRET=
 PAYPAL_API_URL=
+
+UPLOADTHING_TOKEN=
 
 ```
