@@ -1,4 +1,4 @@
-import { carts, orderItems, orders, products } from "@/db/schema";
+import { carts, orderItems, orders, products, reviews } from "@/db/schema";
 import {
   cartItemSchema,
   paymentResultSchema,
@@ -8,6 +8,9 @@ import { InferSelectModel } from "drizzle-orm";
 import { z } from "zod";
 
 export type Product = InferSelectModel<typeof products>;
+export type Review = InferSelectModel<typeof reviews> & {
+  user?: { name: string };
+};
 
 export type Cart = InferSelectModel<typeof carts>;
 export type CartItem = z.infer<typeof cartItemSchema>;

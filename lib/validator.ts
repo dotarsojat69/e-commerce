@@ -1,8 +1,8 @@
 import * as z from "zod";
 import { formatNumberWithDecimal } from "./utils";
 import { PAYMENT_METHODS } from "./constant";
-import { createInsertSchema } from "drizzle-zod";
-import { orderItems, orders } from "@/db/schema";
+import { createInsertSchema, createSelectSchema } from "drizzle-zod";
+import { orderItems, orders, products } from "@/db/schema";
 
 export const signInFormSchema = z.object({
   email: z.string().min(6, "Email must be at least 6 characters"),
@@ -36,6 +36,24 @@ export const cartItemSchema = z.object({
       "Price must have exactly two decimal places (e.g., 49.99)"
     ),
 });
+
+export const insertProductSchema = createSelectSchema(products, {
+  images: z.array(z.string()).min(1, 'Product must have at least one image'),
+}).omit({
+  id: true,
+  rating: true,
+  numReviews: true,
+  createdAt: true,
+})
+
+export const updateProductSchema = createSelectSchema(products, {
+  images: z.array(z.string()).min(1, 'Product must have at least one image'),
+  stock: z.coerce.number().min(0, 'Stock must be at least 0'),
+}).omit({
+  rating: true,
+  numReviews: true,
+  createdAt: true,
+})
 
 export const shippingAddressSchema = z.object({
   fullName: z.string().min(8, "Name must be at least 8 characters"),

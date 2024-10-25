@@ -2,7 +2,7 @@ import { APP_NAME } from "@/lib/constant";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import MainNav from "../user/main-nav";
+import MainNav from "./main-nav";
 import Menu from "@/components/shared/header/menu";
 
 export default async function AdminLayout({
