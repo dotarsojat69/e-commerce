@@ -30,6 +30,7 @@ export const createOrder = async () => {
       taxPrice: cart.taxPrice,
       totalPrice: cart.totalPrice,
     });
+
     const insertedOrderId = await db.transaction(async (tx) => {
       const insertedOrder = await tx.insert(orders).values(order).returning();
       for (const item of cart.items) {
@@ -60,3 +61,13 @@ export const createOrder = async () => {
     return { success: false, message: formatError(error) };
   }
 };
+
+export async function getOrderById(orderId: string) {
+  return await db.query.orders.findFirst({
+    where: eq(orders.id, orderId),
+    with: {
+      orderItems: true,
+      user: { columns: { name: true, email: true } },
+    },
+  });
+}
