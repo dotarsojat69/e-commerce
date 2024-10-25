@@ -77,3 +77,8 @@ export const insertOrderSchema = createInsertSchema(orders, {
 export const insertOrderItemSchema = createInsertSchema(orderItems, {
   price: z.number(),
 });
+
+export const updateProfileSchema = z.object({
+  name: z.string().min(6, "Name must be at least 6 characters"),
+  email: z.string().min(6, "Email must be at least 6 characters"),
+});
