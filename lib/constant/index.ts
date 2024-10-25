@@ -13,6 +13,8 @@ export const USER_ROLES = process.env.USER_ROLES
   ? process.env.USER_ROLES.split(", ")
   : ["admin", "user"];
 
+export const PAGE_SIZE = Number(process.env.PAGE_SIZE) || 3;
+
 export const signInDefaultValues = {
   email: "",
   password: "",
