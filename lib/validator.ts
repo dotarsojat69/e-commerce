@@ -73,6 +73,7 @@ export const insertOrderSchema = createInsertSchema(orders, {
     })
     .optional(),
 });
+
 export const insertOrderItemSchema = createInsertSchema(orderItems, {
   price: z.number(),
 });
