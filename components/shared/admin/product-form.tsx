@@ -45,7 +45,9 @@ export default function ProductForm({
     defaultValues:
       product && type === "Update" ? product : productDefaultValues,
   });
+
   const { toast } = useToast();
+
   async function onSubmit(values: z.infer<typeof insertProductSchema>) {
     if (type === "Create") {
       const res = await createProduct(values);
@@ -77,9 +79,11 @@ export default function ProductForm({
       }
     }
   }
+
   const images = form.watch("images");
   const isFeatured = form.watch("isFeatured");
   const banner = form.watch("banner");
+
   return (
     <Form {...form}>
       <form

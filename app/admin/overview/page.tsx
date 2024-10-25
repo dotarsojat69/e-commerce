@@ -1,11 +1,11 @@
-import { auth } from '@/auth'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { getOrderSummary } from '@/lib/actions/order.actions'
-import { APP_NAME } from '@/lib/constant'
-import { formatCurrency, formatDateTime, formatNumber } from '@/lib/utils'
-import { BadgeDollarSign, Barcode, CreditCard, Users } from 'lucide-react'
-import { Metadata } from 'next'
-import Charts from './charts'
+import { auth } from "@/auth";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { getOrderSummary } from "@/lib/actions/order.actions";
+import { APP_NAME } from "@/lib/constant";
+import { formatCurrency, formatDateTime, formatNumber } from "@/lib/utils";
+import { Barcode, CreditCard, Users } from "lucide-react";
+import { Metadata } from "next";
+import Charts from "./charts";
 import {
   Table,
   TableBody,
@@ -13,20 +13,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
-import Link from 'next/link'
+} from "@/components/ui/table";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: `Admin Dashboard - ${APP_NAME}`,
-}
+};
 
 export default async function DashboardPage() {
-  const session = await auth()
-  if (session?.user.role !== 'admin')
-    throw new Error('admin permission required')
+  const session = await auth();
+  if (session?.user.role !== "admin")
+    throw new Error("admin permission required");
 
-  const summary = await getOrderSummary()
-  
+  const summary = await getOrderSummary();
+
   return (
     <div className="space-y-4">
       <h1 className="h2-bold">Dashboard</h1>
@@ -34,7 +34,9 @@ export default async function DashboardPage() {
         <Card>
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
             <CardTitle className="text-sm font-medium">Total Revenue</CardTitle>
-            <BadgeDollarSign />
+            <span className="border rounded-full text-sm font-medium px-2.5 py-0.5 shadow">
+              Rp
+            </span>
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">
@@ -107,7 +109,7 @@ export default async function DashboardPage() {
                 {summary.latestOrders.map((order) => (
                   <TableRow key={order.id}>
                     <TableCell>
-                      {order.user?.name ? order.user.name : 'Deleted user'}
+                      {order.user?.name ? order.user.name : "Deleted user"}
                     </TableCell>
                     <TableCell>
                       {formatDateTime(order.createdAt).dateOnly}
@@ -126,5 +128,5 @@ export default async function DashboardPage() {
         </Card>
       </div>
     </div>
-  )
+  );
 }

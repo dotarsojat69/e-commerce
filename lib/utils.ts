@@ -7,12 +7,12 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-const NUMBER_FORMATTER = new Intl.NumberFormat("en-ID");
+const NUMBER_FORMATTER = new Intl.NumberFormat("id-ID");
 export function formatNumber(number: number) {
   return NUMBER_FORMATTER.format(number);
 }
 
-const CURRENCY_FORMATTER = new Intl.NumberFormat("en-ID", {
+const CURRENCY_FORMATTER = new Intl.NumberFormat("id-ID", {
   currency: "IDR",
   style: "currency",
   minimumFractionDigits: 2,
@@ -88,15 +88,15 @@ export const formatDateTime = (dateString: Date) => {
     hour12: true, // use 12-hour clock (true) or 24-hour clock (false)
   };
   const formattedDateTime: string = new Date(dateString).toLocaleString(
-    "en-ID",
+    "id-ID",
     dateTimeOptions
   );
   const formattedDate: string = new Date(dateString).toLocaleString(
-    "en-ID",
+    "id-ID",
     dateOptions
   );
   const formattedTime: string = new Date(dateString).toLocaleString(
-    "en-ID",
+    "id-ID",
     timeOptions
   );
   return {
