@@ -1,10 +1,15 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
-import qs from 'query-string'
+import qs from "query-string";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
+}
+
+const NUMBER_FORMATTER = new Intl.NumberFormat("en-ID");
+export function formatNumber(number: number) {
+  return NUMBER_FORMATTER.format(number);
 }
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat("en-ID", {
@@ -106,13 +111,13 @@ export function formUrlQuery({
   key,
   value,
 }: {
-  params: string
-  key: string
-  value: string | null
+  params: string;
+  key: string;
+  value: string | null;
 }) {
-  const currentUrl = qs.parse(params)
+  const currentUrl = qs.parse(params);
 
-  currentUrl[key] = value
+  currentUrl[key] = value;
 
   return qs.stringifyUrl(
     {
@@ -120,5 +125,5 @@ export function formUrlQuery({
       query: currentUrl,
     },
     { skipNull: true }
-  )
+  );
 }
