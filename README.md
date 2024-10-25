@@ -13,8 +13,8 @@ Make sure you have the following installed on your machine:
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/dotarsojat69/ConnectHub.git
-cd ConnectHub
+git clone https://github.com/dotarsojat69/e-commerce.git
+cd e-commerce
 ```
 
 **Installation**
