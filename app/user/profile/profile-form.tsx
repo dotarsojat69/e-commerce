@@ -27,7 +27,9 @@ const ProfileForm = () => {
       email: session?.user.email!,
     },
   });
+
   const { toast } = useToast();
+
   async function onSubmit(values: z.infer<typeof updateProfileSchema>) {
     const res = await updateProfile(values);
     if (!res.success)
@@ -35,6 +37,7 @@ const ProfileForm = () => {
         variant: "destructive",
         description: res.message,
       });
+      
     const newSession = {
       ...session,
       user: {
@@ -47,6 +50,7 @@ const ProfileForm = () => {
       description: res.message,
     });
   }
+
   return (
     <Form {...form}>
       <form

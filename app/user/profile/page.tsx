@@ -8,6 +8,7 @@ import ProfileForm from "./profile-form";
 export const metadata: Metadata = {
   title: `Customer Profile - ${APP_NAME}`,
 };
+
 export default async function ProfilePage() {
   const session = await auth();
   if (!session) {
